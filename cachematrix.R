@@ -2,9 +2,10 @@
 ## functions do
 
 ## Write a short comment describing this function
-
+### This function has denitions for setting, accessing the matrix as well as
+### setting, accessing the matrix inverse. 
 makeCacheMatrix <- function(x = matrix()) {
-  # Set the inverse to be NULL
+  # Set the inverse to be NULL matrix
   inverseMatrix <<-matrix()
   # function definition for seting the matrix
   setMatrix <- function(y){
@@ -30,12 +31,15 @@ makeCacheMatrix <- function(x = matrix()) {
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
   matrixInv <-x$getMatrixInverse()
+  ### Check if all the elements of matrixInv are NULL, if so then calculate 
+  ### the inverse using solve function
   if(isTRUE(all.equal(is.na(matrixInv),
                       matrix(TRUE,dim(matrixInv)[1],dim(matrixInv)[2])))) {
     message("Calculating Matrix Inverse ")
     inverseMat <-solve(x$getMatrix())
+    ### Set the matrix inverse
     x$setMatrixInverse(inverseMat)
     }
-  
+  # Return Matrix inverse
   x$getMatrixInverse()
 }
